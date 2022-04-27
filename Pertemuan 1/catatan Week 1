@@ -1,0 +1,61 @@
+Cara membuat tabel dengan menggunakan sql :
+create table mhs (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    nama varchar(100) NOT  NULL,
+    alamat text(200) NOT NULL,
+    semester int(1) not null
+    );
+    
+    
+cara memasukan data :
+-INSERT INTO mhs (nama, alamat, semester)VALUES ('faisal', 'randugunting',4);
+-INSERT INTO `mhs` (`id`, `nama`, `alamat`, `semester`) VALUES (NULL, 'asrof', 'talang', '4'), (NULL, 'rohman', 'pesarean', '2');
+
+
+Cara menampilkan kolom nama dan semester :
+SELECT nama, semester FROM mhs;
+
+
+cara mengupdate data (memperbarui data/mengganti data yang sudah ada) :
+UPDATE mhs set nama = 'idham', alamat = 'margasari', semester = 2
+WHERE id = 2  
+
+Delete dan update harus berdasarkan kondisi , seperti nama dan id
+
+cara men delete data :
+DELETE FROM mhs WHERE id = 1;
+
+
+
+Cara menambah kolom menggunakan alter :
+ALTER TABLE mhs ADD dosbing varchar(100); {menambahkan kolom dosbing}
+
+cara menghapus kolom menggunakan alter :
+ALTER TABLE mhs DROP COLUMN dosbing; {dosbing=target kolom yang akan di hapus}
+
+cara memodifikasi kolom :
+ALTER TABLE mhs MODIFY COLUMN dosbing int(3);
+
+
+JOIN
+
+Buat tabel baru terlebih dahulu :
+CREATE TABLE dosen (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    nama_dosen varchar(100) NOT null
+    );
+    
+    
+INNER JOIN :
+SELECT mhs.nama as nama, dosen.nama_dosen FROM mhs
+INNER JOIN dosen on mhs.dosbing = dosen.id
+
+
+cara menampilkan data dengan huruf awalan : {misalkan awalan 'f'}
+SELECT * FROM dosen
+WHERE nama_dosen LIKE '%f%'
+
+
+
+
+  
